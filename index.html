@@ -5,14 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Library</title>
 </head>
 <body>
 
+    <div id="inputOverlay" class="inputBoxHide">>
+        <form action="" id="inputForm">
+            <label for="bookTitle">Book Title?</label>
+            <input type="text" name="" id="bookTitle" class="textInput">
+            <label for="bookAuthor">Book Author?</label>
+            <input type="text" name="" id="bookAuthor" class="textInput">
+            <label for="bookPages">Pages?</label>
+            <input type="number" name="" id="bookPages" class="textInput">
+            <label for="bookReadSlider">Read?</label>
+            <div id="sliderBox">
+                <input type="checkbox" name="" id="bookReadSlider">>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+
     <header>
         <img src="" alt="">
         <h1>Library</h1>
+        <button id="addBookBtn">+ Add Book</button>
     </header>
 
     <main>
@@ -20,10 +37,6 @@
             <h2 class="bookTitle">Ecce Homo</h2>
             <h4 class="bookAuth">Freidreich Nietzcshe</h4>
             <h4 class="bookPages">256</h4>
-            <div class="sliderEle">
-                <label for="readSlider">Read?</label>
-                <input type="checkbox" name="read" id="readSlider" class="bookReadSlider">
-            </div>
        </div> 
     </main>
 

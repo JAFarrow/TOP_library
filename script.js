@@ -1,3 +1,6 @@
+const formToggle = document.getElementById('addBookBtn');
+const additionOverlay = document.getElementById('inputOverlay')
+
 function book(title, author, pages) {
     this.title = title;
     this.author = author;
@@ -8,3 +11,8 @@ function book(title, author, pages) {
         return `${this.title} by ${this.author}. ${this.pages} pages. ${readStatus}.`;
     }
 };
+
+formToggle.addEventListener('click', () => {
+    additionOverlay.classList.remove('inputBoxHide');
+    additionOverlay.classList.add('inputBoxShow');
+});
