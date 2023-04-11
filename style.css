@@ -95,7 +95,12 @@ main {
     justify-self: center;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+};
 
+.bookCard h3 p {
+    margin: 1.2rem;
 }
 
 /* .sliderEle {
