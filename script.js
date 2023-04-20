@@ -10,6 +10,22 @@ const submitBtn = document.getElementById('submitBtn');
 
 let myLibrary = [];
 
+myLibrary.push(new book('Thus Spoke Zarathustra', 'Friedrich Nietzsche', '254', false));
+
+function displayLib () {
+    for (i= 0; i < myLibrary.length; i++) {
+        cardPush(cardCreation(myLibrary[i], i));
+    }
+};
+
+
+displayLib();
+
+function clearLib () {
+    let allCards = document.querySelectorAll('.bookCard');
+    allCards.forEach((card) => {card.remove()});
+};
+
 formToggle.addEventListener('click', () => {
     additionOverlay.classList.remove('inputBoxHide');
     additionOverlay.classList.add('inputBoxShow');
@@ -22,18 +38,23 @@ function book(title, author, pages, read) {
     this.read = read;
 };
 
-function cardCreation (obj) {
+function cardCreation (obj, ind) {
     let cardDiv = document.createElement('div');
     cardDiv.classList.add('bookCard');
+    cardDiv.id = `card${ind}`;
     let bookTitle = document.createElement('h3');
-    bookTitle.innerText = obj.title;
+    bookTitle.textContent = obj.title;
     cardDiv.appendChild(bookTitle);
     let bookAuthor = document.createElement('h3');
-    bookAuthor.innerText = obj.author;
+    bookAuthor.textContent = obj.author;
     cardDiv.appendChild(bookAuthor);
     let bookPages = document.createElement('p');
-    bookPages.innerText = obj.pages;
+    bookPages.textContent = obj.pages;
     cardDiv.appendChild(bookPages);
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Remove Book';
+    deleteButton.classList.add('cardDeleteButton');
+    cardDiv.appendChild(deleteButton);
     return cardDiv; 
 };
 
@@ -45,22 +66,9 @@ function customSubmit(event) {
     myLibrary.push(new book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, bookReadInput.checked));
     additionOverlay.classList.remove('inputBoxShow');
     additionOverlay.classList.add('inputBoxHide');
-    console.log(myLibrary)
     event.preventDefault();
+    clearLib();
+    displayLib();
 }
 
 submitBtn.addEventListener('click', customSubmit, false);
-
-cardPush(cardCreation({
-    "title": "Hello",
-    "author": "Benis",
-    "pages": "123",
-    "read": true
-}));
-
-cardPush(cardCreation({
-    "title": "Hello",
-    "author": "Benis",
-    "pages": "123",
-    "read": true
-}));
