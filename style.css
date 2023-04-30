@@ -97,20 +97,54 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-};
-
-.bookCard h3 p {
-    margin: 1.2rem;
 }
 
-/* .sliderEle {
+input.slider {
+    opacity: 0;
+    position: absolute;
+    left: -101vw;
+}
+
+input.slider + label {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  input.slider + label::before {
+    content: "";
+    width: 5rem;
+    height: 3rem;
+    background-color: #DDD;
+    border-radius: 2rem;
+    margin-right: .5rem;
+  }
+
+  input.slider + label::after {
+    display: flex;
     justify-content: center;
     align-items: center;
-    align-self: flex-end;
-    margin-top: auto;
-} */
+    position: absolute;
+    content: "";
+    width: 2.5rem;
+    height: 2.2rem;
+    left: .3rem;
+    border-radius: 2rem;
+    background-color: #333;
+  }
+
+  input.slider:focus + label::before{
+    outline: 0.1rem solid #333;
+  }
+
+  input.slider:checked + label::before {
+    background-color: #C6FFB8;
+  }
+
+  input.slider:checked + label::after {
+    transform: translateX(1.9rem);
+  }
 
 footer {
     grid-row: 3;
