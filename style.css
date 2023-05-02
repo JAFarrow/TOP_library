@@ -65,6 +65,12 @@ body {
     font-size: 2.4rem;
 }
 
+#closeOverlay {
+    align-self: flex-end;
+    padding: 0.2rem;
+    border-radius: 100%;
+}
+
 .textInput {
     width: 50%;
     padding: 0.4rem;
@@ -99,20 +105,20 @@ main {
     align-items: center;
 }
 
-input.slider {
+input[type="checkbox"].slider {
     opacity: 0;
     position: absolute;
     left: -101vw;
 }
 
-input.slider + label {
+input[type="checkbox"].slider + label {
     position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
 
-  input.slider + label::before {
+  input[type="checkbox"].slider + label::before {
     content: "";
     width: 5rem;
     height: 3rem;
@@ -121,7 +127,7 @@ input.slider + label {
     margin-right: .5rem;
   }
 
-  input.slider + label::after {
+  input[type="checkbox"].slider + label::after {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,15 +140,15 @@ input.slider + label {
     background-color: #333;
   }
 
-  input.slider:focus + label::before{
+  input[type="checkbox"].slider:focus + label::before{
     outline: 0.1rem solid #333;
   }
 
-  input.slider:checked + label::before {
+  input[type="checkbox"].slider:checked + label::before {
     background-color: #C6FFB8;
   }
 
-  input.slider:checked + label::after {
+  input[type="checkbox"].slider:checked + label::after {
     transform: translateX(1.9rem);
   }
 

@@ -6,6 +6,7 @@ const bookTitleInput = document.getElementById('bookTitle');
 const bookAuthorInput = document.getElementById('bookAuthor');
 const bookPagesInput = document.getElementById('bookPages');
 const bookReadInput = document.getElementById('bookReadSlider');
+const closeOverlayButton = document.getElementById('closeOverlay');
 const submitBtn = document.getElementById('submitBtn');
 
 let myLibrary = [];
@@ -38,19 +39,52 @@ function book(title, author, pages, read) {
     this.read = read;
 };
 
+function createCheckboxSlider(state, ind) {
+    let checkboxContainer = document.createElement('div');
+    let checkbox = document.createElement('input');
+    let checkboxId = `cardCheckbox${ind}`;
+    checkbox.type = 'checkbox';
+    checkbox.name = checkboxId;
+    checkbox.id = checkboxId;
+    if (state == true) {
+        checkbox.checked = 'checked';
+    }
+    checkbox.classList.add('slider');
+    checkboxContainer.appendChild(checkbox);
+    let checkboxLabel = document.createElement('label');
+    checkboxLabel.htmlFor = checkboxId;
+    checkboxLabel.textContent = 'Read?'
+    checkboxContainer.appendChild(checkboxLabel);
+    checkbox.addEventListener('click', () => {
+        if (myLibrary[ind].read == true) {
+            myLibrary[ind].read = false;
+        } else {
+            myLibrary[ind].read = true;
+        };
+    });
+    return checkboxContainer;
+}
+
 function cardCreation(obj, ind) {
+
     let cardDiv = document.createElement('div');
     cardDiv.classList.add('bookCard');
     cardDiv.id = `card${ind}`;
+
     let bookTitle = document.createElement('h3');
     bookTitle.textContent = obj.title;
     cardDiv.appendChild(bookTitle);
+
     let bookAuthor = document.createElement('h3');
     bookAuthor.textContent = obj.author;
     cardDiv.appendChild(bookAuthor);
+
     let bookPages = document.createElement('p');
     bookPages.textContent = obj.pages;
     cardDiv.appendChild(bookPages);
+
+    cardDiv.appendChild(createCheckboxSlider(obj.read, ind));
+
     let deleteButton = document.createElement('button');
     deleteButton.id = `libraryPosition${ind}`;
     deleteButton.textContent = 'Remove Book From Library';
@@ -62,6 +96,7 @@ function cardCreation(obj, ind) {
         displayLib();
     })
     cardDiv.appendChild(deleteButton);
+
     return cardDiv;
 };
 
@@ -69,14 +104,18 @@ function cardPush(card) {
     mainPage.appendChild(card);
 }
 
-function customSubmit(event) {
+submitBtn.addEventListener('click', (event) => {
     myLibrary.push(new book(bookTitleInput.value, bookAuthorInput.value, bookPagesInput.value, bookReadInput.checked));
     additionOverlay.classList.remove('inputBoxShow');
     additionOverlay.classList.add('inputBoxHide');
     event.preventDefault();
     clearDisplay();
     displayLib();
-}
+}, false);
 
-submitBtn.addEventListener('click', customSubmit, false);
+closeOverlayButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    additionOverlay.classList.remove('inputBoxShow');
+    additionOverlay.classList.add('inputBoxHide');
+}, false);
 
