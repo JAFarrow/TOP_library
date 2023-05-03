@@ -1,3 +1,10 @@
+:root {
+    --header-card-bg-colour: #f8fafc;
+    --main-bg-colour: #cbd5e1;
+    --bg-blend: #64748b;
+    --accent-colour: #0f172a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +31,18 @@ h4 {
     font-size: 2rem;
 }
 
+h5 {
+    font-size: 1.6rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+label {
+    font-size: 1.8rem;
+}
+
 body {
     height: 100vh;
     width: 100vw;
@@ -41,7 +60,7 @@ body {
     height: 100%;
     width: 100%;
     background-color: #7dd3fc;
-    opacity: 0.8;
+    opacity: .8;
 }
 
 .inputBoxHide {
@@ -56,26 +75,27 @@ body {
     align-items: center;
     width: 33%;
     height: 33%;
-    border: 0.2rem solid #000;
+    border: .2rem solid #000;
     border-radius: 1.2rem;
     background-color: #fff;
 }
 
-#inputForm label {
-    font-size: 2.4rem;
-}
-
 #closeOverlay {
     align-self: flex-end;
-    padding: 0.2rem;
+    padding: .2rem;
     border-radius: 100%;
 }
 
 .textInput {
     width: 50%;
-    padding: 0.4rem;
-    border: 0.15rem solid #000;
-    border-radius: 0.4rem;
+    padding: .4rem;
+    border: .15rem solid #000;
+    border-radius: .4rem;
+}
+
+.sliderBox {
+    width: 12rem;
+    height: 4.5rem;
 }
 
 header {
@@ -83,6 +103,20 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: var(--header-bg-colour);
+    box-shadow: .2rem .1rem 1.2rem var(--bg-blend);
+    color: var(--accent-colour);
+    z-index: 2;
+}
+
+#addBookBtn {
+     font-size: 1.4rem;
+    font-weight: bold;
+    background-color: var(--accent-colour);
+    color: var(--main-bg-colour);
+    padding: .5rem;
+    border: none;
+    border-radius: .6rem;
 }
 
 main {
@@ -90,12 +124,15 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    background-color: var(--main-bg-colour);
+    color: var(--accent-colour);
 }
 
 .bookCard {
     width: 80%;
     height: 80%;
-    border: 0.2rem solid #000;
+    border: .2rem solid var(--accent-colour);
+    border-radius: .8rem;
     padding: 1.5rem;
     align-self: center;
     justify-self: center;
@@ -103,6 +140,27 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: var(--header-card-bg-colour);
+    color: var(--accent-colour);
+}
+
+.bookCard * {
+    margin: .3rem;
+}
+
+.bookCard > .authorItalics {
+    font-style: italic;
+}
+
+.bookCard > .cardDeleteButton {
+    margin-top: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: var(--accent-colour);
+    color: var(--main-bg-colour);
+    padding: .5rem;
+    border: none;
+    border-radius: .6rem;
 }
 
 input[type="checkbox"].slider {
@@ -116,13 +174,14 @@ input[type="checkbox"].slider + label {
     display: flex;
     align-items: center;
     cursor: pointer;
+    user-select: none;
   }
 
   input[type="checkbox"].slider + label::before {
     content: "";
     width: 5rem;
     height: 3rem;
-    background-color: #DDD;
+    background-color: var(--main-bg-colour);
     border-radius: 2rem;
     margin-right: .5rem;
   }
@@ -135,21 +194,21 @@ input[type="checkbox"].slider + label {
     content: "";
     width: 2.5rem;
     height: 2.2rem;
-    left: .3rem;
+    margin-left: .3rem;
     border-radius: 2rem;
-    background-color: #333;
+    background-color: var(--accent-colour);
   }
 
   input[type="checkbox"].slider:focus + label::before{
-    outline: 0.1rem solid #333;
+    outline: .1rem solid var(--accent-colour);
   }
 
   input[type="checkbox"].slider:checked + label::before {
-    background-color: #C6FFB8;
+    background-color: #86efac;
   }
 
   input[type="checkbox"].slider:checked + label::after {
-    transform: translateX(1.9rem);
+    transform: translateX(75%);
   }
 
 footer {
@@ -158,4 +217,11 @@ footer {
     justify-content: center;
     align-items: center;
     white-space: pre;
+    background-color: var(--main-bg-colour);
+    color: var(--accent-colour);
+}
+
+footer a {
+    font-size: 2.4rem;
+    color: var(--accent-colour);
 }

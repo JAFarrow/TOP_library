@@ -62,6 +62,7 @@ function createCheckboxSlider(state, ind) {
             myLibrary[ind].read = true;
         };
     });
+    checkboxContainer.classList.add('sliderBox');
     return checkboxContainer;
 }
 
@@ -71,23 +72,24 @@ function cardCreation(obj, ind) {
     cardDiv.classList.add('bookCard');
     cardDiv.id = `card${ind}`;
 
-    let bookTitle = document.createElement('h3');
+    let bookTitle = document.createElement('h5');
     bookTitle.textContent = obj.title;
     cardDiv.appendChild(bookTitle);
 
-    let bookAuthor = document.createElement('h3');
+    let bookAuthor = document.createElement('h5');
     bookAuthor.textContent = obj.author;
+    bookAuthor.classList.add('authorItalics');
     cardDiv.appendChild(bookAuthor);
 
     let bookPages = document.createElement('p');
-    bookPages.textContent = obj.pages;
+    bookPages.textContent = `${obj.pages} Pages`;
     cardDiv.appendChild(bookPages);
 
     cardDiv.appendChild(createCheckboxSlider(obj.read, ind));
 
     let deleteButton = document.createElement('button');
     deleteButton.id = `libraryPosition${ind}`;
-    deleteButton.textContent = 'Remove Book From Library';
+    deleteButton.textContent = 'Remove From Library';
     deleteButton.classList.add('cardDeleteButton');
     deleteButton.addEventListener('click', () => {
         let position = deleteButton.id.replace(/^\D+/g, '');
